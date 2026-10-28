@@ -1,12 +1,12 @@
 import llmstxt from "vitepress-plugin-llms";
 import { defineConfig } from "vitepress";
 
-const docsRoot = "https://docs.boltz.exchange";
+const docsRoot = "https://satsrouting.exchange";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Boltz BTCPay Plugin",
-  description: "Boltz BTCPay Plugin Docs",
+  title: "SatsRouting BTCPay Plugin",
+  description: "SatsRouting BTCPay Plugin Docs",
   head: [["link", { rel: "icon", href: "/assets/logo.svg" }]],
   themeConfig: {
     logo: "/assets/logo.svg",
@@ -31,7 +31,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/BoltzExchange/boltz-btcpay-plugin",
+        link: "https://github.com/SatsRouting/btcpay-plugin-liquid",
       },
     ],
   },

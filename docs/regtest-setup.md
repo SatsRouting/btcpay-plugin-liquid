@@ -1,6 +1,6 @@
 ---
 description:
-  How to set up a local regtest environment for Boltz BTCPay Plugin development
+  How to set up a local regtest environment for SatsRouting BTCPay Plugin development
   using Boltz Regtest.
 next: false
 ---
@@ -25,13 +25,13 @@ docker compose down --volumes
 ./start.sh
 ```
 
-Install the .NET SDK v8 (necessary to build the Plugin).
+Install the .NET SDK v10 (necessary to build the Plugin).
 
 Then clone this repository and build the Plugin:
 
 ```bash
-git clone https://github.com/BoltzExchange/boltz-btcpay-plugin --recurse-submodules
-cd boltz-btcpay-plugin/
+git clone https://github.com/SatsRouting/btcpay-plugin-liquid --recurse-submodules
+cd btcpay-plugin-liquid/
 ln --symbolic ~/path/to/regtest
 make dev
 ```

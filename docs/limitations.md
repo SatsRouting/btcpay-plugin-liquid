@@ -1,19 +1,19 @@
 ---
 description:
-  Known limitations of the Boltz BTCPay Plugin, including the lack of support
+  Known limitations of the SatsRouting BTCPay Plugin, including the lack of support
   for 0-amount invoices in pull payments and admin enablement requirements.
 ---
 
 # 🚧 Limitations
 
-This page lists know limitations of the Boltz BTCPay Plugin
+This page lists know limitations of the SatsRouting BTCPay Plugin
 
 ## Known Limitations
 
 One **major limitation** that we are aware of today, is the lack of support for
 0-amount invoices for pull payments. That's because 0-amount invoices can’t be
-handled non-custodially by Boltz. Nothing we can change about this fact, but the
-real UX issue with the Boltz BTCPay Plugin is that we can’t display an error to
+handled non-custodially by SatsRouting. Nothing we can change about this fact, but the
+real UX issue with the SatsRouting BTCPay Plugin is that we can’t display an error to
 end-users when a 0-amount invoice is being used.
 
 The current UX for end-users is as follows: when they try to claim a pull
@@ -41,7 +41,7 @@ issues we are working on to make this happen:
 - [https://github.com/btcpayserver/btcpayserver/discussions/6221](https://github.com/btcpayserver/btcpayserver/discussions/6221)
 - [https://github.com/btcpayserver/btcpayserver/discussions/6220](https://github.com/btcpayserver/btcpayserver/discussions/6220)
 
-Also, as a security measure, BTCPay Server admins have to manually enable Boltz
-Plugin for their users after installation.
+Also, as a security measure, BTCPay Server admins have to manually enable the
+SatsRouting Plugin for their users after installation.
 
-<figure><img src="./assets/admin_boltz_enabled.png" alt=""><figcaption><p>If you are operating a BTCPay instance and want to enable Boltz BTCPay plugin for your users, you can do so via Admin → Advanced → “Allow Plugin for Tenants”</p></figcaption></figure>
+<figure><img src="./assets/admin_boltz_enabled.png" alt=""><figcaption><p>If you are operating a BTCPay instance and want to enable the SatsRouting BTCPay plugin for your users, you can do so via Admin → Advanced → “Allow Plugin for Tenants”</p></figcaption></figure>
