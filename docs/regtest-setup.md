@@ -1,7 +1,7 @@
 ---
 description:
-  How to set up a local regtest environment for SatsRouting BTCPay Plugin development
-  using Boltz Regtest.
+  How to set up a local regtest environment for SatsRouting BTCPay Plugin
+  development using Boltz Regtest.
 next: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 description:
-  How to manually build and package the SatsRouting BTCPay Plugin from source for
-  development or manual upload to a BTCPay Server instance.
+  How to manually build and package the SatsRouting BTCPay Plugin from source
+  for development or manual upload to a BTCPay Server instance.
 ---
 
 # 🏗️ Building the Plugin

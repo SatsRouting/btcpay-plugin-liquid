@@ -1,7 +1,7 @@
 ---
 description:
-  Install and configure the SatsRouting BTCPay Plugin to accept Lightning payments
-  non-custodially, with or without running your own Lightning node.
+  Install and configure the SatsRouting BTCPay Plugin to accept Lightning
+  payments non-custodially, with or without running your own Lightning node.
 next:
   text: "🚧 Limitations"
   link: "/limitations"
@@ -9,9 +9,9 @@ next:
 
 # 👋 Introduction
 
-The SatsRouting BTCPay Plugin allows any merchant to accept Lightning payments in a
-non-custodial way without running a Lightning node or fully manage liquidity of
-an existing Lightning node.
+The SatsRouting BTCPay Plugin allows any merchant to accept Lightning payments
+in a non-custodial way without running a Lightning node or fully manage
+liquidity of an existing Lightning node.
 
 ## How do I install the plugin?
 
@@ -25,11 +25,11 @@ request the plugin installation.
 <figure><img src="./assets/manage-plugins.png" alt=""><figcaption><p>
 SatsRouting Plugin is one of the few options for merchants on a shared instance to accept Lightning payments without creating and linking custodial third party accounts.</p></figcaption></figure>
 
-**Choose Operational Mode:** Once the plugin is installed, locate the new "SatsRouting
-Plugin" menu item to start the setup. The first step is to choose the
-operational mode. One can choose between letting the plugin manage liquidity of
-a connected Lightning node or accept Lightning payments without running a node.
-We choose the latter.
+**Choose Operational Mode:** Once the plugin is installed, locate the new
+"SatsRouting Plugin" menu item to start the setup. The first step is to choose
+the operational mode. One can choose between letting the plugin manage liquidity
+of a connected Lightning node or accept Lightning payments without running a
+node. We choose the latter.
 
 <figure><img src="./assets/plugin_setup_01.png" alt=""><figcaption></figcaption></figure>
 
@@ -69,11 +69,12 @@ was discontinued
 ## How does the plugin work under the hood?
 
 From an architectural perspective, the
-[SatsRouting BTCPay Plugin](https://github.com/SatsRouting/btcpay-plugin-liquid) is
-mainly a UI for [Boltz Client](https://github.com/BoltzExchange/boltz-client), the
-open-source long-running swap daemon it is built on. The plugin downloads latest
-release binaries of Boltz Client by default, checks the PGP signature and, if all
-checks out, starts the daemon and connects it to the SatsRouting swap backend.
+[SatsRouting BTCPay Plugin](https://github.com/SatsRouting/btcpay-plugin-liquid)
+is mainly a UI for
+[Boltz Client](https://github.com/BoltzExchange/boltz-client), the open-source
+long-running swap daemon it is built on. The plugin downloads latest release
+binaries of Boltz Client by default, checks the PGP signature and, if all checks
+out, starts the daemon and connects it to the SatsRouting swap backend.
 
 The plugin also extends BTCPay's Greenfield API. You can access the merged
 server Swagger spec at `https://<your-btcpay-server>/swagger/v1/swagger.json`.
