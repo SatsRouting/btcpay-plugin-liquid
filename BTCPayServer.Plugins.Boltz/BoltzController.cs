@@ -55,6 +55,21 @@ public class BoltzController(
     private StoreData CurrentStore => HttpContext.GetStoreData();
     private string CurrentStoreId => CurrentStore.Id;
 
+    [AllowAnonymous]
+    [HttpGet("~/plugins/satsrouting/logo.png")]
+    public IActionResult Logo()
+    {
+        var stream = typeof(BoltzController).Assembly
+            .GetManifestResourceStream("BTCPayServer.Plugins.Boltz.Resources.img.satsrouting-logo.png");
+        if (stream is null)
+        {
+            return NotFound();
+        }
+
+        Response.Headers.CacheControl = "public, max-age=86400";
+        return File(stream, "image/png");
+    }
+
     private BoltzSettings? SetupSettings
     {
         get
@@ -342,7 +357,7 @@ public class BoltzController(
         }
         catch (Exception e)
         {
-            SetErrorMessage(e, "Error connecting to Boltz");
+            SetErrorMessage(e, "Error connecting to SatsRouting");
         }
 
         return View(data);
@@ -723,7 +738,7 @@ public class BoltzController(
             }
             catch (Exception e)
             {
-                SetErrorMessage(e, "Error connecting to Boltz");
+                SetErrorMessage(e, "Error connecting to SatsRouting");
             }
         }
 
@@ -810,7 +825,7 @@ public class BoltzController(
             case "Clear":
                 {
                     await boltzService.Set(CurrentStoreId!, null);
-                    TempData[WellKnownTempData.SuccessMessage] = "Boltz plugin credentials cleared";
+                    TempData[WellKnownTempData.SuccessMessage] = "SatsRouting plugin credentials cleared";
                     break;
                 }
             case "Start":

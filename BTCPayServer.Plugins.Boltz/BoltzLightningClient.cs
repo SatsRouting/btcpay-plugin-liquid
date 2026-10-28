@@ -235,7 +235,7 @@ public class BoltzLightningClient(
         if (_clnInfo == null)
         {
             var httpClient = new HttpClient();
-            string url = "https://api.boltz.exchange/v2/nodes";
+            string url = "https://api.satsrouting.exchange/v2/nodes";
             HttpResponseMessage response = await httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
@@ -248,7 +248,7 @@ public class BoltzLightningClient(
         var info = await client.GetInfo();
         return new LightningNodeInformation
         {
-            Alias = "boltz-client",
+            Alias = "SatsRouting",
             Version = info.Version,
             BlockHeight = (int)info.BlockHeights.Btc,
             Color = "#e6c826",
@@ -297,7 +297,7 @@ public class BoltzLightningClient(
         }, cancellation);
         if (wallet.Readonly)
         {
-            return new PayResponse(PayResult.Unknown, "payout created - fund from payouts tab of boltz plugin");
+            return new PayResponse(PayResult.Unknown, "payout created - fund from payouts tab of SatsRouting plugin");
         }
         var payDetails = new PayDetails
         {

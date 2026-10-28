@@ -59,6 +59,10 @@ public class BoltzDaemon(
 )
 {
     private static readonly Version ClientVersion = new("2.12.5");
+
+    // Boltz API-compatible backend used by default on mainnet instead of the
+    // public Boltz backend. Other networks keep the Boltz Client defaults.
+    private const string MainnetBoltzUrl = "https://api.satsrouting.exchange/v2";
     private static readonly SemaphoreSlim BinarySemaphore = new(1, 1);
     private const string ClientCacheDirSetting = "BOLTZ_CLIENT_CACHE_DIR";
     private static readonly Lazy<string> ExpectedManifest = new(() =>
@@ -224,6 +228,14 @@ public class BoltzDaemon(
             ? $"liquidWalletSyncInterval = {interval}"
             : string.Empty;
 
+        var boltzSection = networkName == "mainnet"
+            ? $"""
+
+        [boltz]
+        url = "{MainnetBoltzUrl}"
+        """
+            : string.Empty;
+
         return $"""
         standalone = true
         network = "{networkName}"
@@ -237,6 +249,7 @@ public class BoltzDaemon(
         host = "{defaultUri.Host}"
         port = {defaultUri.Port}
         rest.disable = true
+        {boltzSection}
         """;
     }
 

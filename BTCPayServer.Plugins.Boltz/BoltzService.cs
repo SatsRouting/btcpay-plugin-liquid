@@ -64,7 +64,7 @@ public class BoltzService(
 )
     : EventHostedServiceBase(eventAggregator, logger)
 {
-    private static readonly string SettingsName = "Boltz";
+    private static readonly string SettingsName = "SatsRouting";
 
     private ConcurrentDictionary<string, BoltzSettings> _settings = new();
     public BoltzServerSettings ServerSettings { get; private set; }
@@ -78,7 +78,7 @@ public class BoltzService(
 
     public override async Task StartAsync(CancellationToken cancellationToken)
     {
-        externalServiceOptions.Value.OtherExternalServices.Add(SettingsName, new Uri("https://boltz.exchange"));
+        externalServiceOptions.Value.OtherExternalServices.Add(SettingsName, new Uri("https://satsrouting.exchange"));
         _settings = new ConcurrentDictionary<string, BoltzSettings>(
             (await storeRepository.GetSettingsAsync<BoltzSettings>(SettingsName))
             .Where(pair => pair.Value is not null)
@@ -242,7 +242,7 @@ public class BoltzService(
             throw new InvalidOperationException("Store has no btc wallet configured");
         }
 
-        var address = await BtcWallet.ReserveAddressAsync(store.Id, derivation.AccountDerivation, "Boltz");
+        var address = await BtcWallet.ReserveAddressAsync(store.Id, derivation.AccountDerivation, "SatsRouting");
         return address.Address.ToString();
     }
 
@@ -557,7 +557,7 @@ public class BoltzService(
 
     public static List<Stat> PairStats(PairInfo pairInfo) =>
     [
-        new() { Name = "Boltz Service Fee", Value = pairInfo.Fees.Percentage, Unit = Unit.Percent },
+        new() { Name = "SatsRouting Service Fee", Value = pairInfo.Fees.Percentage, Unit = Unit.Percent },
         new() { Name = "Network Fee", Value = pairInfo.Fees.MinerFees, Unit = Unit.Sat },
         new() { Name = "Min Amount", Value = pairInfo.Limits.Minimal, Unit = Unit.Sat },
         new() { Name = "Max Amount", Value = pairInfo.Limits.Maximal, Unit = Unit.Sat }
