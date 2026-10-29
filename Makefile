@@ -1,4 +1,4 @@
-VERSION := 1.0.3
+VERSION := 1.0.4
 RELEASE_PATH := ./release/BTCPayServer.Plugins.SatsRouting/$(VERSION)
 BOLTZ_REGTEST ?= $(CURDIR)/regtest
 BOLTZ_REGTEST_PATH := $(abspath $(BOLTZ_REGTEST))

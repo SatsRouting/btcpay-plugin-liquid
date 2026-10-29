@@ -54,7 +54,7 @@ public class BoltzLightningClient(
 
     public override string ToString()
     {
-        return $"type=boltz;server={settings.GrpcUrl};macaroon={settings.Macaroon};walletId={walletId};allowinsecure=true";
+        return $"type=satsrouting;server={settings.GrpcUrl};macaroon={settings.Macaroon};walletId={walletId};allowinsecure=true";
     }
 
     private LightningPayment PaymentFromSwapInfo(SwapInfo info)

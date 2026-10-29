@@ -13,7 +13,7 @@ public class BoltzLightningConnectionStringHandler(BoltzDaemon daemon) : ILightn
     public ILightningClient? Create(string connectionString, Network network, out string? error)
     {
         var kv = LightningConnectionStringHelper.ExtractValues(connectionString, out var type);
-        if (type != "boltz")
+        if (type != "satsrouting")
         {
             error = null;
             return null;
@@ -21,7 +21,7 @@ public class BoltzLightningConnectionStringHandler(BoltzDaemon daemon) : ILightn
 
         if (!kv.TryGetValue("server", out var server))
         {
-            error = $"The key 'server' is mandatory for boltz connection strings";
+            error = $"The key 'server' is mandatory for satsrouting connection strings";
             return null;
         }
 
