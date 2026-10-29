@@ -62,7 +62,9 @@ public class BoltzDaemon(
 
     // Boltz API-compatible backend used by default on mainnet instead of the
     // public Boltz backend. Other networks keep the Boltz Client defaults.
-    private const string MainnetBoltzUrl = "https://api.satsrouting.exchange/v2";
+    // NOTE: Boltz Client appends the "/v2" API path itself, so the URL must NOT
+    // include it (otherwise requests go to "/v2/v2/..." and fail).
+    private const string MainnetBoltzUrl = "https://api.satsrouting.exchange";
     private static readonly SemaphoreSlim BinarySemaphore = new(1, 1);
     private const string ClientCacheDirSetting = "BOLTZ_CLIENT_CACHE_DIR";
     private static readonly Lazy<string> ExpectedManifest = new(() =>

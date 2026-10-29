@@ -79,7 +79,7 @@ namespace BTCPayServer.Plugins.Boltz.Tests
                 new Uri("https://127.0.0.1:9002"));
 
             Assert.Contains("[boltz]", config);
-            Assert.Contains("url = \"https://api.satsrouting.exchange/v2\"", config);
+            Assert.Contains("url = \"https://api.satsrouting.exchange\"", config);
         }
 
         [Fact]
