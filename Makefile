@@ -1,4 +1,4 @@
-VERSION := 1.0.2
+VERSION := 1.0.3
 RELEASE_PATH := ./release/BTCPayServer.Plugins.SatsRouting/$(VERSION)
 BOLTZ_REGTEST ?= $(CURDIR)/regtest
 BOLTZ_REGTEST_PATH := $(abspath $(BOLTZ_REGTEST))
@@ -17,8 +17,12 @@ btcpay-appsettings:
 	\"DEBUG_PLUGINS\": \"$(PWD)/BTCPayServer.Plugins.Boltz/bin/Debug/net10.0/BTCPayServer.Plugins.SatsRouting.dll\" \
 	}" > ./btcpayserver/BTCPayServer/appsettings.dev.json
 
+# NOTE: -p:StaticWebAssetsEnabled=false is required for the BTCPay Server host
+# to build/run under the integration tests. Upstream patches this directly in
+# the btcpayserver submodule; we inject it as a global MSBuild property instead
+# so the submodule can stay pinned to the clean v2.4.7 tag.
 build:
-	dotnet build BTCPayServer.Plugins.Boltz
+	dotnet build BTCPayServer.Plugins.Boltz -p:StaticWebAssetsEnabled=false
 
 run:
 	cd ./btcpayserver/BTCPayServer && \
@@ -33,5 +37,5 @@ test: btcpay-appsettings
 	TESTS_BTCNBXPLORERURL="http://127.0.0.1:32838/" \
 	TESTS_POSTGRES="User ID=boltz;Password=boltz;Include Error Detail=true;Host=127.0.0.1;Port=5432;Database=btcpayserver" \
 	TESTS_EXPLORER_POSTGRES="User ID=boltz;Password=boltz;Include Error Detail=true;Host=127.0.0.1;Port=5432;Database=nbxplorer" \
-	dotnet test ./BTCPayServer.Plugins.Boltz.Tests --logger "console;verbosity=normal"
+	dotnet test ./BTCPayServer.Plugins.Boltz.Tests -p:StaticWebAssetsEnabled=false --logger "console;verbosity=normal"
 

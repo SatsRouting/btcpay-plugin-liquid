@@ -17,11 +17,11 @@ namespace BTCPayServer.Plugins.Boltz;
 
 public class BoltzPlugin : BaseBTCPayServerPlugin
 {
-    public override Version Version => new(1, 0, 2);
+    public override Version Version => new(1, 0, 3);
 
     public override IBTCPayServerPlugin.PluginDependency[] Dependencies { get; } =
     [
-        new IBTCPayServerPlugin.PluginDependency { Identifier = nameof(BTCPayServer), Condition = ">=2.3.7" }
+        new IBTCPayServerPlugin.PluginDependency { Identifier = nameof(BTCPayServer), Condition = ">=2.4.7" }
     ];
 
     public override void Execute(IServiceCollection services)

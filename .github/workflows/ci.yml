@@ -34,10 +34,10 @@ jobs:
         run: dotnet restore BTCPayServer.Plugins.Boltz --locked-mode
 
       - name: Build plugin
-        run: dotnet build BTCPayServer.Plugins.Boltz --configuration Release --no-restore
+        run: dotnet build BTCPayServer.Plugins.Boltz --configuration Release --no-restore -p:StaticWebAssetsEnabled=false
 
       - name: Build test project for Playwright
-        run: dotnet build BTCPayServer.Plugins.Boltz.Tests --configuration Debug -m:1
+        run: dotnet build BTCPayServer.Plugins.Boltz.Tests --configuration Debug -m:1 -p:StaticWebAssetsEnabled=false
 
       - name: Install Playwright Chromium
         run: node ./BTCPayServer.Plugins.Boltz.Tests/bin/Debug/net10.0/.playwright/package/cli.js install chromium

@@ -89,7 +89,9 @@ public class BoltzController(
             var chainConfig = (string?)TempData.Peek("chainSetup");
             return String.IsNullOrEmpty(chainConfig)
                 ? null
-                : JsonParser.Default.Parse<ChainConfig>(chainConfig);
+                // Fully qualified: BTCPay Server v2.4.x added BTCPayServer.JsonParser,
+                // which otherwise shadows this protobuf parser in the BTCPayServer.* namespace.
+                : Google.Protobuf.JsonParser.Default.Parse<ChainConfig>(chainConfig);
         }
         set => TempData["chainSetup"] = value is null ? null : JsonFormatter.Default.Format(value);
     }
@@ -159,7 +161,7 @@ public class BoltzController(
         {
             var request = new ExecuteRecommendationsRequest { Force = true };
             if (!string.IsNullOrEmpty(chainRecommendation))
-                request.Chain.Add(JsonParser.Default.Parse<ChainRecommendation>(chainRecommendation));
+                request.Chain.Add(Google.Protobuf.JsonParser.Default.Parse<ChainRecommendation>(chainRecommendation));
             await Boltz.ExecuteAutoSwapRecommendations(request);
             TempData[WellKnownTempData.SuccessMessage] = "Recommendations executed";
         }

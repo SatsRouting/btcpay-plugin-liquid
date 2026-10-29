@@ -10,7 +10,7 @@
         <AssemblyName>BTCPayServer.Plugins.SatsRouting</AssemblyName>
         <Product>SatsRouting</Product>
         <Description>Accept Lightning payments without running a node in a non-custodial way.</Description>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
     </PropertyGroup>
 
     <ItemDefinitionGroup>

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using BTCPayServer.Tests;
 using Microsoft.Playwright;
 using Xunit;
-using Xunit.Abstractions;
 using static Microsoft.Playwright.Assertions;
 
 namespace BTCPayServer.Plugins.Boltz.Tests

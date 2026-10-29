@@ -15,8 +15,6 @@ using BTCPayServer.Services.Reporting;
 using BTCPayServer.Tests;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using Xunit.Abstractions;
-
 namespace BTCPayServer.Plugins.Boltz.Tests
 {
     [Trait("Integration", "Integration")]

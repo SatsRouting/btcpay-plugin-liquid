@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
-using Xunit.Abstractions;
-
 namespace BTCPayServer.Plugins.Boltz.Tests
 {
     [Trait("Integration", "Integration")]

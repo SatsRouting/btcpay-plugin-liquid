@@ -7,8 +7,6 @@ using BTCPayServer.Plugins.Boltz.Models;
 using BTCPayServer.Tests;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
-using Xunit.Abstractions;
-
 namespace BTCPayServer.Plugins.Boltz.Tests
 {
     [Trait("Integration", "Integration")]

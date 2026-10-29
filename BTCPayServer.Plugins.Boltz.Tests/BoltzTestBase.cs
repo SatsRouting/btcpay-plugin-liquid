@@ -13,7 +13,6 @@ using BTCPayServer.Tests;
 using BTCPayServer.Tests.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using NBXplorer;
-using Xunit.Abstractions;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Memory;
