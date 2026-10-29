@@ -108,7 +108,7 @@ The project layout:
 
 | Path                                 | Content                                   |
 | ------------------------------------ | ----------------------------------------- |
-| `BTCPayServer.Plugins.Boltz/`        | Plugin source (assembly: `SatsRouting`)   |
+| `BTCPayServer.Plugins.SatsRouting/`   | Plugin source (assembly: `SatsRouting`)   |
 | `BTCPayServer.Plugins.Boltz.Tests/`  | Integration and UI tests                  |
 | `regtest/`, `regtest-config/`        | Local regtest environment                 |
 | `docs/`                              | User and developer documentation          |

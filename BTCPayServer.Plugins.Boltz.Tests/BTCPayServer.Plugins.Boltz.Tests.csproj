@@ -45,7 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../btcpayserver/BTCPayServer.Tests/BTCPayServer.Tests.csproj" />
-    <ProjectReference Include="../BTCPayServer.Plugins.Boltz/BTCPayServer.Plugins.Boltz.csproj" />
+    <ProjectReference Include="../BTCPayServer.Plugins.SatsRouting/BTCPayServer.Plugins.SatsRouting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

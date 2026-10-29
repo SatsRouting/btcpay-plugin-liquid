@@ -21,7 +21,7 @@ jobs:
           dotnet-version: "10.0.x"
           cache: true
           cache-dependency-path: |
-            ./BTCPayServer.Plugins.Boltz/packages.lock.json
+            ./BTCPayServer.Plugins.SatsRouting/packages.lock.json
             ./BTCPayServer.Plugins.Boltz.Tests/BTCPayServer.Plugins.Boltz.Tests.csproj
 
       - name: Use Node.js
@@ -31,10 +31,10 @@ jobs:
           cache: "npm"
 
       - name: Restore dependencies
-        run: dotnet restore BTCPayServer.Plugins.Boltz --locked-mode
+        run: dotnet restore BTCPayServer.Plugins.SatsRouting --locked-mode
 
       - name: Build plugin
-        run: dotnet build BTCPayServer.Plugins.Boltz --configuration Release --no-restore -p:StaticWebAssetsEnabled=false
+        run: dotnet build BTCPayServer.Plugins.SatsRouting --configuration Release --no-restore -p:StaticWebAssetsEnabled=false
 
       - name: Build test project for Playwright
         run: dotnet build BTCPayServer.Plugins.Boltz.Tests --configuration Debug -m:1 -p:StaticWebAssetsEnabled=false

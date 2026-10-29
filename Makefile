@@ -1,4 +1,4 @@
-VERSION := 1.0.4
+VERSION := 1.0.5
 RELEASE_PATH := ./release/BTCPayServer.Plugins.SatsRouting/$(VERSION)
 BOLTZ_REGTEST ?= $(CURDIR)/regtest
 BOLTZ_REGTEST_PATH := $(abspath $(BOLTZ_REGTEST))
@@ -14,7 +14,7 @@ gh-release:
 
 btcpay-appsettings:
 	echo "{ \
-	\"DEBUG_PLUGINS\": \"$(PWD)/BTCPayServer.Plugins.Boltz/bin/Debug/net10.0/BTCPayServer.Plugins.SatsRouting.dll\" \
+	\"DEBUG_PLUGINS\": \"$(PWD)/BTCPayServer.Plugins.SatsRouting/bin/Debug/net10.0/BTCPayServer.Plugins.SatsRouting.dll\" \
 	}" > ./btcpayserver/BTCPayServer/appsettings.dev.json
 
 # NOTE: -p:StaticWebAssetsEnabled=false is required for the BTCPay Server host
@@ -22,7 +22,7 @@ btcpay-appsettings:
 # the btcpayserver submodule; we inject it as a global MSBuild property instead
 # so the submodule can stay pinned to the clean v2.4.7 tag.
 build:
-	dotnet build BTCPayServer.Plugins.Boltz -p:StaticWebAssetsEnabled=false
+	dotnet build BTCPayServer.Plugins.SatsRouting -p:StaticWebAssetsEnabled=false
 
 run:
 	cd ./btcpayserver/BTCPayServer && \
