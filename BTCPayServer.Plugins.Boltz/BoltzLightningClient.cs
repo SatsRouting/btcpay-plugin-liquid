@@ -241,19 +241,31 @@ public class BoltzLightningClient(
             string responseBody = await response.Content.ReadAsStringAsync();
 
             var nodeStats = JsonConvert.DeserializeObject<NodeStats>(responseBody);
-            _clnInfo = NodeInfo.Parse(nodeStats!.BTC.CLN.Uris.First());
+            // The backend may expose a CLN or an LND node (or both). Use whichever
+            // is available instead of assuming CLN, which is not always present.
+            var node = nodeStats?.BTC?.CLN ?? nodeStats?.BTC?.LND;
+            var nodeUri = node?.Uris?.FirstOrDefault();
+            if (nodeUri != null)
+            {
+                _clnInfo = NodeInfo.Parse(nodeUri);
+            }
         }
 
         var client = await GetClient();
         var info = await client.GetInfo();
-        return new LightningNodeInformation
+        var nodeInformation = new LightningNodeInformation
         {
             Alias = "SatsRouting",
             Version = info.Version,
             BlockHeight = (int)info.BlockHeights.Btc,
             Color = "#e6c826",
-            NodeInfoList = { _clnInfo }
         };
+        if (_clnInfo != null)
+        {
+            nodeInformation.NodeInfoList.Add(_clnInfo);
+        }
+
+        return nodeInformation;
     }
 
     public async Task<LightningNodeBalance> GetBalance(CancellationToken cancellation = new CancellationToken())
