@@ -31,11 +31,19 @@ run:
 
 dev: btcpay-appsettings build run
 
+# NOTE: xUnit v3 uses Microsoft.Testing.Platform. On the .NET 10 SDK the legacy
+# "dotnet test" VSTest bridge is gone, and the new "dotnet test" orchestrator
+# fails the MTP handshake in this setup ("Zero tests ran"). We instead build the
+# test project and run the Microsoft.Testing.Platform host executable directly,
+# which is the robust way to drive xUnit v3 tests.
+TEST_DLL := ./BTCPayServer.Plugins.Boltz.Tests/bin/Debug/net10.0/BTCPayServer.Plugins.Boltz.Tests.dll
+
 test: btcpay-appsettings
+	dotnet build ./BTCPayServer.Plugins.Boltz.Tests --configuration Debug -p:StaticWebAssetsEnabled=false
 	$(eval BTC_COOKIE := $(shell docker exec boltz-bitcoind cat /app/bitcoin/regtest/.cookie 2>/dev/null))
 	TESTS_BTCRPCCONNECTION="server=http://127.0.0.1:18443;$(BTC_COOKIE)" \
 	TESTS_BTCNBXPLORERURL="http://127.0.0.1:32838/" \
 	TESTS_POSTGRES="User ID=boltz;Password=boltz;Include Error Detail=true;Host=127.0.0.1;Port=5432;Database=btcpayserver" \
 	TESTS_EXPLORER_POSTGRES="User ID=boltz;Password=boltz;Include Error Detail=true;Host=127.0.0.1;Port=5432;Database=nbxplorer" \
-	dotnet test ./BTCPayServer.Plugins.Boltz.Tests -p:StaticWebAssetsEnabled=false --logger "console;verbosity=normal"
+	dotnet $(TEST_DLL)
 
